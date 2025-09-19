@@ -6,15 +6,17 @@ x_mean = np.mean(data)
 numberOfResamples = 1000
 result = []
 
+#Generate new samples and add them to result
 for i in range(numberOfResamples):
     sample = np.random.choice(data, size=len(data), replace=True)
     x_bootstrap_mean = np.mean(sample)
     result.append(x_bootstrap_mean-x_mean)
 
-holds = 0
+#Check if conditions are met
+hold = 0
 for i in range(len(result)):
     if (result[i] > -6 and result[i] < 4 ):
-        holds+=1
+        hold+=1
 
-probability = holds/len(result)
+probability = hold/len(result)
 print(probability)
